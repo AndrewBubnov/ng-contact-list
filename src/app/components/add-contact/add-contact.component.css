@@ -1,0 +1,29 @@
+.add-container{
+    display: flex;
+    justify-content: space-between;
+    width: 1000px;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    height: 1.4rem;
+    margin-top: 50px;
+}
+input{
+    width: 250px;
+    height: 100%;
+    padding: 0;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    font-size: 1rem;
+}
+input:active{
+    outline: none;
+}
+button{
+    height: 100%;
+}
+.button-container{
+    display: flex;
+    justify-content: flex-end;
+    width: 120px;
+    height: 1.4rem;
+}

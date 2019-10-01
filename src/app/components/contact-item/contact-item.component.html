@@ -1,0 +1,14 @@
+<div class="contact-container" [ngSwitch]="contact.edited">
+    <div *ngFor="let field of fields">
+        <div *ngSwitchCase="true">
+            <input type="text" [(ngModel)]="field">
+        </div>
+        <div *ngSwitchCase="false">
+            <div class="item-record">{{field}}</div>
+        </div>
+    </div>
+    <div class="buttons-container">
+        <button (click)="onClick()">{{buttonTitle}}</button>
+        <button (click)="onDeleteContact(contact._id)">Delete</button>
+    </div>
+</div>
