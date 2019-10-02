@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import {Contact} from "../../models/Contact";
 
 @Component({
@@ -6,19 +6,20 @@ import {Contact} from "../../models/Contact";
   templateUrl: './add-contact.component.html',
   styleUrls: ['./add-contact.component.css']
 })
-export class AddContactComponent implements OnInit {
+export class AddContactComponent {
   name: string = '';
   mail: string = '';
   phone: string | number = '';
-  @Output() addContact = new EventEmitter<object>()
+  @Output() addContact = new EventEmitter<object>();
 
   constructor() { }
 
-  ngOnInit() {}
-
   onAddContact = () => {
-    const newContact: Contact = {name: this.name, mail: this.mail, phone: this.phone, edited: false}
-    this.addContact.emit(newContact)
+    const newContact: Contact = {name: this.name, mail: this.mail, phone: this.phone, edited: false};
+    this.addContact.emit(newContact);
+    this.name = '';
+    this.mail = '';
+    this.phone = '';
   }
 
 }

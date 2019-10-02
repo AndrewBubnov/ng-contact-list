@@ -1,10 +1,10 @@
 <div class="contact-container" [ngSwitch]="contact.edited">
     <div *ngFor="let field of fields">
         <div *ngSwitchCase="true">
-            <input type="text" [(ngModel)]="field">
+            <input type="text" [(ngModel)]="contact[field]">
         </div>
         <div *ngSwitchCase="false">
-            <div class="item-record">{{field}}</div>
+            <div class="item-record">{{contact[field]}}</div>
         </div>
     </div>
     <div class="buttons-container">

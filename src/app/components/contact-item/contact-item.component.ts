@@ -1,5 +1,6 @@
-import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {Contact} from "../../models/Contact";
+
 
 
 @Component({
@@ -7,22 +8,21 @@ import {Contact} from "../../models/Contact";
   templateUrl: './contact-item.component.html',
   styleUrls: ['./contact-item.component.css']
 })
-export class ContactItemComponent implements OnInit {
+export class ContactItemComponent{
   @Input() contact: Contact;
   @Output() deleteContact = new EventEmitter<string>()
-  fields: object = {};
+  @Output() editContact = new EventEmitter<object>()
+  fields: string[] = ['name', 'mail', 'phone'];
   buttonTitle: string = 'Edit';
+
 
   constructor() { }
 
-  ngOnInit() {
-    let neededPairs = Object.entries(this.contact).filter(item => item[0] !== 'edited' && item[0] !== '_id')
-    this.fields = neededPairs.map(item => item[1])
-  }
-
   onDeleteContact = (_id) => this.deleteContact.emit(_id)
+
   onClick = () => {
     this.contact.edited = !this.contact.edited;
+    if (!this.contact.edited) this.editContact.emit(this.contact);
     this.buttonTitle = this.contact.edited ? 'Save' : 'Edit';
   }
 

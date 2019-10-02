@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0;
+    font-family: Roboto,
+    "Helvetica Neue", sans-serif;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(rgb(102, 110, 157), rgb(62, 69, 102));
+    color: #fff;
+}

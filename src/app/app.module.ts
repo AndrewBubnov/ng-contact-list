@@ -6,6 +6,8 @@ import { ContactsComponent } from './components/contacts/contacts.component';
 import { ContactItemComponent } from './components/contact-item/contact-item.component';
 import { HttpClientModule } from "@angular/common/http";
 import { AddContactComponent } from './components/add-contact/add-contact.component';
+import { MatSnackBarModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { AddContactComponent } from './components/add-contact/add-contact.compon
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
