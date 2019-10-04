@@ -12,7 +12,7 @@ export class ContactItemComponent{
   @Input() contact: Contact;
   @Output() deleteContact = new EventEmitter<string>()
   @Output() editContact = new EventEmitter<object>()
-  fields: string[] = ['name', 'mail', 'phone'];
+
   buttonTitle: string = 'Edit';
 
 

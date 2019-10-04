@@ -1,14 +1,50 @@
-<div class="contact-container" [ngSwitch]="contact.edited">
-    <div *ngFor="let field of fields">
-        <div *ngSwitchCase="true">
-            <input type="text" [(ngModel)]="contact[field]">
+<form class="contact-container" [ngSwitch]="contact.edited" #itemForm="ngForm">
+    <div *ngSwitchCase="true">
+        <input name="name" type="text" [(ngModel)]="contact.name" placeholder="Name" #nameField="ngModel" required/>
+        <div *ngIf="nameField.invalid && (nameField.dirty || nameField.touched)"
+             class="alert">name is required
         </div>
-        <div *ngSwitchCase="false">
-            <div class="item-record">{{contact[field]}}</div>
+    </div>
+    <div *ngSwitchCase="false">
+        <div class="item-record">{{contact.name}}</div>
+    </div>
+    <div *ngSwitchCase="true">
+        <input name="mail" type="text" [(ngModel)]="contact.mail" placeholder="Mail" #mailField="ngModel" required/>
+        <div *ngIf="mailField.invalid && (mailField.dirty || mailField.touched)"
+             class="alert">mail is required
         </div>
+    </div>
+    <div *ngSwitchCase="false">
+        <div class="item-record">{{contact.mail}}</div>
+    </div>
+    <div *ngSwitchCase="true">
+        <input name="phone" type="text" [(ngModel)]="contact.phone" placeholder="Phone" #phoneField="ngModel" required/>
+        <div *ngIf="phoneField.invalid && (phoneField.dirty || phoneField.touched)"
+             class="alert">phone is required
+        </div>
+    </div>
+    <div *ngSwitchCase="false">
+        <div class="item-record">{{contact.phone}}</div>
     </div>
     <div class="buttons-container">
-        <button (click)="onClick()">{{buttonTitle}}</button>
+        <button (click)="onClick()" [disabled]="itemForm.form.invalid">{{buttonTitle}}</button>
         <button (click)="onDeleteContact(contact._id)">Delete</button>
     </div>
-</div>
+</form>
+
+
+
+<!--<div class="contact-container" [ngSwitch]="contact.edited">-->
+<!--    <div *ngFor="let field of fields">-->
+<!--        <div *ngSwitchCase="true">-->
+<!--            <input type="text" [(ngModel)]="contact[field]">-->
+<!--        </div>-->
+<!--        <div *ngSwitchCase="false">-->
+<!--            <div class="item-record">{{contact[field]}}</div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="buttons-container">-->
+<!--        <button (click)="onClick()">{{buttonTitle}}</button>-->
+<!--        <button (click)="onDeleteContact(contact._id)">Delete</button>-->
+<!--    </div>-->
+<!--</div>-->
