@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const mongodb = require('mongodb');
+const cors = require('cors');
 const MongoClient = require('mongodb').MongoClient;
 const url = `mongodb://AndrewBubnov:acnot88_0175A@cluster0-shard-00-00-edszp.mongodb.net:27017,cluster0-shard-00-01-
     edszp.mongodb.net:27017,cluster0-shard-00-02-edszp.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`;
@@ -15,7 +16,7 @@ const letters = /[a-zA-Z]+/;
 const phoneNumber = /^\+?[0-9]{10}/;
 const email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const errors = {
-    fields: 'You entered fields, that not allowed',
+    fields: 'You entered not allowed fields',
     name: 'Name field should consist of Latin alphabet letters only',
     mail: 'Please enter email in valid format',
     phone: 'Please enter phone in valid format',
@@ -25,6 +26,7 @@ app.use(express.static(__dirname + '/dist/angular-contacts/'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(cors());
 
 const addContact = (req, res) => {
     currentDB.collection(table).insertOne(req.body, async (err) => {

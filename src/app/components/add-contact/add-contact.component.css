@@ -22,3 +22,18 @@ button{
     width: 120px;
     height: 1.4rem;
 }
+.alert{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #e67373;
+    color: #dadada;
+    height: 30px;
+    border-radius: 3px;
+    margin-top: 10px;
+}
+.button{
+    width: 50px;
+    border-radius: 3px;
+}
