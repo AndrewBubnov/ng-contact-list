@@ -3,26 +3,26 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
-import { ContactItemComponent } from './components/contact-item/contact-item.component';
 import { HttpClientModule } from "@angular/common/http";
-import { AddContactComponent } from './components/add-contact/add-contact.component';
 import { MatSnackBarModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { FormComponent } from './components/form/form.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactsComponent,
-    ContactItemComponent,
-    AddContactComponent,
+    FormComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     MatSnackBarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

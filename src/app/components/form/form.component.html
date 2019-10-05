@@ -1,4 +1,5 @@
-<form class="contact-container" [ngSwitch]="contact.edited" #itemForm="ngForm">
+<form [ngSwitch]="contact.edited" #itemForm="ngForm">
+    <div class="record-container">
     <div *ngSwitchCase="true">
         <input name="name" type="text" [(ngModel)]="contact.name" placeholder="Name" #nameField="ngModel" required/>
         <div *ngIf="nameField.invalid && (nameField.dirty || nameField.touched)"
@@ -26,25 +27,17 @@
     <div *ngSwitchCase="false">
         <div class="item-record">{{contact.phone}}</div>
     </div>
-    <div class="buttons-container">
-        <button (click)="onClick()" [disabled]="itemForm.form.invalid">{{buttonTitle}}</button>
-        <button (click)="onDeleteContact(contact._id)">Delete</button>
+    </div>
+    <div [ngSwitch]="type">
+        <div *ngSwitchCase="'edit'" class="buttons-container-edit">
+            <button mat-raised-button color="primary" (click)="onEditContact()"
+                    [disabled]="itemForm.form.invalid">{{buttonTitle}}</button>
+            <button mat-raised-button color="primary" (click)="onDeleteContact(contact._id)">Delete</button>
+        </div>
+        <div *ngSwitchCase="'add'" class="buttons-container-add">
+            <button mat-raised-button color="primary" (click)="onAddContact(itemForm)" [disabled]="itemForm.form.invalid">
+                Add
+            </button>
+        </div>
     </div>
 </form>
-
-
-
-<!--<div class="contact-container" [ngSwitch]="contact.edited">-->
-<!--    <div *ngFor="let field of fields">-->
-<!--        <div *ngSwitchCase="true">-->
-<!--            <input type="text" [(ngModel)]="contact[field]">-->
-<!--        </div>-->
-<!--        <div *ngSwitchCase="false">-->
-<!--            <div class="item-record">{{contact[field]}}</div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="buttons-container">-->
-<!--        <button (click)="onClick()">{{buttonTitle}}</button>-->
-<!--        <button (click)="onDeleteContact(contact._id)">Delete</button>-->
-<!--    </div>-->
-<!--</div>-->

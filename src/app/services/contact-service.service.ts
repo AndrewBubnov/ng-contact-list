@@ -17,9 +17,7 @@ const httpOptions = {
 export class ContactService {
   contactsUrl: string = 'http://localhost:3000';
 
-
   constructor(private http: HttpClient) {}
-
 
   getContacts(): Observable <Contact[]> {
     return this.http.get<Contact[]>(`${this.contactsUrl}/contacts`)

@@ -56,7 +56,7 @@ const validation = (req, res, fn) => {
     } else {
         res.status(503).send(error)
     }
-}
+};
 
 
 const getUsers = async (req, res) => {
