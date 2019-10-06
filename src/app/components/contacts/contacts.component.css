@@ -5,3 +5,8 @@
     background: #e65c5c;
     color: #fff;
 }
+@media screen and (max-width: 380px) {
+    .container{
+        width: 100vw;
+    }
+}

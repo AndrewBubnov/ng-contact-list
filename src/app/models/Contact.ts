@@ -1,7 +1,9 @@
 export class Contact {
-    name: string;
-    mail: string;
-    phone: string | number;
-    edited: boolean;
-    _id?: string;
+    constructor(
+    public name: string,
+    public mail: string,
+    public phone: string | number,
+    public edited: boolean,
+    public _id?: string
+    ){}
 }

@@ -4,6 +4,9 @@ body { margin: 0;
     "Helvetica Neue", sans-serif;
     display: flex;
     justify-content: center;
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
     background: linear-gradient(rgb(102, 110, 157), rgb(62, 69, 102));
     color: #fff;
 }

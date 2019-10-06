@@ -17,7 +17,6 @@ export class FormComponent {
 
   buttonTitle: string = 'Edit';
 
-  constructor() { }
 
   onAddContact = (form) => {
     if (this.contact.name && this.contact.mail && this.contact.phone){

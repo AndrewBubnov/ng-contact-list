@@ -16,7 +16,6 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
 export class RecordStringComponent implements OnInit, OnDestroy{
   @Input('data') data: string;
   private state: string;
-  constructor() { }
 
   ngOnInit(): void {
     this.state = 'start';
@@ -26,6 +25,4 @@ export class RecordStringComponent implements OnInit, OnDestroy{
   ngOnDestroy(): void {
     this.state = 'start';
   }
-
-
 }

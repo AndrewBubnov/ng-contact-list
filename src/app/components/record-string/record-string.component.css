@@ -1,3 +1,8 @@
 .item-record {
     width: 250px;
 }
+@media screen and (max-width: 380px) {
+    .item-record {
+        width: 100%;
+    }
+}

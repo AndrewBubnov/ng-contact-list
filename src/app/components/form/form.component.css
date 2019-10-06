@@ -44,4 +44,32 @@ form{
     align-items: flex-end;
     justify-content: space-between;
     width: 1000px;
+    padding-bottom: 10px;
+    border-bottom: 1px dotted #a8a8a8;
+}
+@media screen and (max-width: 380px) {
+    form {
+        display: block;
+        width: 100%;
+    }
+    .record-container {
+        flex-direction: column;
+        justify-content: space-between;
+        width: 98%;
+        height: 150px;
+        margin: auto;
+    }
+    .item-record, input{
+        position: relative;
+        width: 100%;
+    }
+    .buttons-container-edit, .buttons-container-add{
+        margin: 10px 1% auto auto
+    }
+    .alert{
+        position: absolute;
+        margin-top: 2px;
+        width: 98%;
+        height: 1.35rem;
+    }
 }

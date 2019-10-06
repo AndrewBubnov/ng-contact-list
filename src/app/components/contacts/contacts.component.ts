@@ -13,12 +13,7 @@ const serverError = "Something's gone wrong on server. Please try again."
 export class ContactsComponent implements OnInit {
 
   contacts: Array<Contact>;
-  private emptyContact: Contact = {
-    name: '',
-    mail: '',
-    phone: '',
-    edited: true,
-  };
+  private emptyContact: Contact = new Contact('','','', true)
 
   constructor(private contactService: ContactService, private snackBar: MatSnackBar) { }
 
@@ -30,10 +25,7 @@ export class ContactsComponent implements OnInit {
 
   onDeleteContact = (_id) => {
     this.contactService.deleteContact(_id).subscribe(
-        result => {
-          const index = this.contacts.findIndex(item => result._id === item._id);
-          this.contacts.splice(index, 1)
-        },
+        result => this.contacts = [...this.contacts].filter(item => item._id !== result._id),
             err => this.openSnackBar(err.error)
     )};
 
