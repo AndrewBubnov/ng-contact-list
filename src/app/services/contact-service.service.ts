@@ -24,14 +24,14 @@ export class ContactService {
   }
 
   addContact(contact: Contact) {
-    return this.http.post<Contact[]>(`${this.contactsUrl}/contact/add`, contact, httpOptions)
+    return this.http.post<Contact>(`${this.contactsUrl}/contact/add`, contact, httpOptions)
   }
 
   deleteContact(_id: string) {
-    return this.http.delete<Contact[]>(`${this.contactsUrl}/contact/delete/${_id}`, httpOptions)
+    return this.http.delete<string>(`${this.contactsUrl}/contact/delete/${_id}`, httpOptions)
   }
 
   editContact(contact: Contact){
-    return this.http.put<Contact[]>(`${this.contactsUrl}/contact/edit`, contact, httpOptions)
+    return this.http.put<Contact>(`${this.contactsUrl}/contact/edit`, contact, httpOptions)
   }
 }

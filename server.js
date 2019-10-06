@@ -29,19 +29,23 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
 
 const addContact = (req, res) => {
-    currentDB.collection(table).insertOne(req.body, async (err) => {
+    const contact = req.body
+    currentDB.collection(table).insertOne(contact, async (err, insertedDocument) => {
         if (err) res.send('An error recording to DB occurs');
-        else await getUsers(req,res);
+        else {
+            contact._id = insertedDocument.insertedId;
+            res.send(contact);
+        }
     });
 }
 
 const editContact = (req, res) => {
-    const body = req.body
+    const body = {...req.body}
     const _id = body._id
     delete(body._id)
-    currentDB.collection(table).updateOne({_id: mongodb.ObjectID(_id)}, {$set: body}, async (err, result) => {
+    currentDB.collection(table).updateOne({_id: mongodb.ObjectID(_id)}, {$set: body}, async (err) => {
         if (err) res.send('An error editing record in DB occurs');
-        else await getUsers(req,res);
+        else res.send(req.body);
     })
 }
 
@@ -59,7 +63,9 @@ const validation = (req, res, fn) => {
 };
 
 
-const getUsers = async (req, res) => {
+
+
+app.get('/contacts', async (req, res) => {
     if (!dbConnectionError) {
         try {
             const contacts = await currentDB.collection('contacts').find().toArray();
@@ -68,9 +74,7 @@ const getUsers = async (req, res) => {
             res.status(503).send("Something wrong's happened on server. Please reload the page")
         }
     } else res.status(503).send('Can not connect to DB at the time. Please try again later')
-}
-
-app.get('/contacts', async (req, res) => await getUsers(req,res))
+})
 
 
 app.post('/contact/add', (req, res) => {
@@ -82,9 +86,10 @@ app.put('/contact/edit', (req, res) => {
 });
 
 app.delete('/contact/delete/:id', (req, res) => {
-    currentDB.collection(table).deleteOne({_id: mongodb.ObjectID(req.params.id)}, async (err, result) => {
+    const _id = req.params.id
+    currentDB.collection(table).deleteOne({_id: mongodb.ObjectID(_id)}, async (err) => {
         if (err) res.status(503).send('An error deleting record in DB occurs');
-        else await getUsers(req,res);
+        else res.send({_id});
     });
 })
 

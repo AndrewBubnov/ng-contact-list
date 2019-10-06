@@ -19,7 +19,6 @@ export class FormComponent {
 
   constructor() { }
 
-
   onAddContact = (form) => {
     if (this.contact.name && this.contact.mail && this.contact.phone){
       const newContact: Contact = {name: this.contact.name, mail: this.contact.mail, phone: this.contact.phone, edited: false};

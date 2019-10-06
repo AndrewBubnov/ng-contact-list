@@ -1,32 +1,41 @@
 <form [ngSwitch]="contact.edited" #itemForm="ngForm">
     <div class="record-container">
-    <div *ngSwitchCase="true">
-        <input name="name" type="text" [(ngModel)]="contact.name" placeholder="Name" #nameField="ngModel" required/>
-        <div *ngIf="nameField.invalid && (nameField.dirty || nameField.touched)"
-             class="alert">name is required
+        <div *ngSwitchCase="true">
+            <div *ngSwitchCase="true">
+                <input name="name" type="text" [(ngModel)]="contact.name" placeholder="name" #nameField="ngModel"
+                       required/>
+                <div *ngIf="nameField.invalid && (nameField.dirty || nameField.touched)"
+                     class="alert">name is required
+                </div>
+            </div>
         </div>
-    </div>
-    <div *ngSwitchCase="false">
-        <div class="item-record">{{contact.name}}</div>
-    </div>
-    <div *ngSwitchCase="true">
-        <input name="mail" type="text" [(ngModel)]="contact.mail" placeholder="Mail" #mailField="ngModel" required/>
-        <div *ngIf="mailField.invalid && (mailField.dirty || mailField.touched)"
-             class="alert">mail is required
+        <div *ngSwitchCase="false">
+            <app-record-string [data]="contact.name"></app-record-string>
         </div>
-    </div>
-    <div *ngSwitchCase="false">
-        <div class="item-record">{{contact.mail}}</div>
-    </div>
-    <div *ngSwitchCase="true">
-        <input name="phone" type="text" [(ngModel)]="contact.phone" placeholder="Phone" #phoneField="ngModel" required/>
-        <div *ngIf="phoneField.invalid && (phoneField.dirty || phoneField.touched)"
-             class="alert">phone is required
+        <div *ngSwitchCase="true">
+            <div *ngSwitchCase="true">
+                <input name="mail" type="text" [(ngModel)]="contact.mail" placeholder="mail" #mailField="ngModel"
+                       required/>
+                <div *ngIf="mailField.invalid && (mailField.dirty || mailField.touched)"
+                     class="alert">mail is required
+                </div>
+            </div>
         </div>
-    </div>
-    <div *ngSwitchCase="false">
-        <div class="item-record">{{contact.phone}}</div>
-    </div>
+        <div *ngSwitchCase="false">
+            <app-record-string [data]="contact.mail"></app-record-string>
+        </div>
+        <div *ngSwitchCase="true">
+            <div *ngSwitchCase="true">
+                <input name="phone" type="text" [(ngModel)]="contact.phone" placeholder="phone" #phoneField="ngModel"
+                       required/>
+                <div *ngIf="phoneField.invalid && (phoneField.dirty || phoneField.touched)"
+                     class="alert">phone is required
+                </div>
+            </div>
+        </div>
+        <div *ngSwitchCase="false">
+            <app-record-string [data]="contact.phone"></app-record-string>
+        </div>
     </div>
     <div [ngSwitch]="type">
         <div *ngSwitchCase="'edit'" class="buttons-container-edit">
@@ -35,9 +44,59 @@
             <button mat-raised-button color="primary" (click)="onDeleteContact(contact._id)">Delete</button>
         </div>
         <div *ngSwitchCase="'add'" class="buttons-container-add">
-            <button mat-raised-button color="primary" (click)="onAddContact(itemForm)" [disabled]="itemForm.form.invalid">
+            <button mat-raised-button color="primary" (click)="onAddContact(itemForm)"
+                    [disabled]="itemForm.form.invalid">
                 Add
             </button>
         </div>
     </div>
 </form>
+
+
+
+<!--<form [ngSwitch]="contact.edited" #itemForm="ngForm">-->
+<!--    <div class="record-container">-->
+<!--    <div *ngSwitchCase="true">-->
+<!--        <input name="name" type="text" [(ngModel)]="contact.name" placeholder="Name" #nameField="ngModel" required/>-->
+<!--        <div *ngIf="nameField.invalid && (nameField.dirty || nameField.touched)"-->
+<!--             class="alert">name is required-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div *ngSwitchCase="false">-->
+<!--        <div class="item-record">{{contact.name}}</div>-->
+<!--    </div>-->
+<!--    <div *ngSwitchCase="true">-->
+<!--        <input name="mail" type="text" [(ngModel)]="contact.mail" placeholder="Mail" #mailField="ngModel" required/>-->
+<!--        <div *ngIf="mailField.invalid && (mailField.dirty || mailField.touched)"-->
+<!--             class="alert">mail is required-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div *ngSwitchCase="false">-->
+<!--        <div class="item-record">{{contact.mail}}</div>-->
+<!--    </div>-->
+<!--    <div *ngSwitchCase="true">-->
+<!--        <input name="phone" type="text" [(ngModel)]="contact.phone" placeholder="Phone" #phoneField="ngModel" required/>-->
+<!--        <div *ngIf="phoneField.invalid && (phoneField.dirty || phoneField.touched)"-->
+<!--             class="alert">phone is required-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div *ngSwitchCase="false">-->
+<!--        <div class="item-record">{{contact.phone}}</div>-->
+<!--    </div>-->
+<!--    </div>-->
+<!--    <div [ngSwitch]="type">-->
+<!--        <div *ngSwitchCase="'edit'" class="buttons-container-edit">-->
+<!--            <button mat-raised-button color="primary" (click)="onEditContact()"-->
+<!--                    [disabled]="itemForm.form.invalid">{{buttonTitle}}</button>-->
+<!--            <button mat-raised-button color="primary" (click)="onDeleteContact(contact._id)">Delete</button>-->
+<!--        </div>-->
+<!--        <div *ngSwitchCase="'add'" class="buttons-container-add">-->
+<!--            <button mat-raised-button color="primary" (click)="onAddContact(itemForm)" [disabled]="itemForm.form.invalid">-->
+<!--                Add-->
+<!--            </button>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</form>-->
+
+
+

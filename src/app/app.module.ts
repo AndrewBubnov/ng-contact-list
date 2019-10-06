@@ -8,6 +8,7 @@ import { MatSnackBarModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { FormComponent } from './components/form/form.component';
+import { RecordStringComponent } from './components/record-string/record-string.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { FormComponent } from './components/form/form.component';
     AppComponent,
     ContactsComponent,
     FormComponent,
+    RecordStringComponent,
   ],
   imports: [
     BrowserModule,
