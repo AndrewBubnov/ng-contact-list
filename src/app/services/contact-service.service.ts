@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
 import { Contact } from "../models/Contact";
+import { Id } from "../models/Id";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 
@@ -28,7 +29,7 @@ export class ContactService {
   }
 
   deleteContact(_id: string) {
-    return this.http.delete<string>(`${this.contactsUrl}/contact/delete/${_id}`, httpOptions)
+    return this.http.delete<Id>(`${this.contactsUrl}/contact/delete/${_id}`, httpOptions)
   }
 
   editContact(contact: Contact){

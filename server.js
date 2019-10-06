@@ -52,8 +52,8 @@ const editContact = (req, res) => {
 const validation = (req, res, fn) => {
     let error = '';
     if (!Object.keys(req.body).every(item => fields.includes(item))) error = errors.fields;
-    if (!req.body.name.match(letters) || req.body.name.length > 30) error = errors.name;
-    if (!req.body.mail.match(email) || req.body.mail.length > 20) error = errors.mail;
+    if (!req.body.name.match(letters) || req.body.name.length > 50) error = errors.name;
+    if (!req.body.mail.match(email) || req.body.mail.length > 50) error = errors.mail;
     if (!req.body.phone.match(phoneNumber) || req.body.name.length > 20) error = errors.phone;
     if (!error) {
         fn(req, res)
@@ -61,8 +61,6 @@ const validation = (req, res, fn) => {
         res.status(503).send(error)
     }
 };
-
-
 
 
 app.get('/contacts', async (req, res) => {

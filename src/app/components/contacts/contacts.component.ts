@@ -30,9 +30,9 @@ export class ContactsComponent implements OnInit {
 
   onDeleteContact = (_id) => {
     this.contactService.deleteContact(_id).subscribe(
-        res_id => {
-          const deletedContact = this.contacts.find(item => res_id === item._id);
-          this.contacts.splice(this.contacts.indexOf(deletedContact), 1);
+        result => {
+          const index = this.contacts.findIndex(item => result._id === item._id);
+          this.contacts.splice(index, 1)
         },
             err => this.openSnackBar(err.error)
     )};
