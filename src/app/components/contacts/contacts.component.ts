@@ -11,7 +11,6 @@ const serverError = "Something's gone wrong on server. Please try again."
   styleUrls: ['./contacts.component.css']
 })
 export class ContactsComponent implements OnInit {
-
   contacts: Array<Contact>;
   private emptyContact: Contact = new Contact('','','', true)
 
