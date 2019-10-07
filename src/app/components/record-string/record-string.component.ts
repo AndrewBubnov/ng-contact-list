@@ -20,5 +20,4 @@ import {animate, style, transition, trigger} from "@angular/animations";
 })
 export class RecordStringComponent {
   @Input('data') data: string;
-  private state: string;
 }
