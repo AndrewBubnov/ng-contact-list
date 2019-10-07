@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
@@ -6,23 +6,19 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
   templateUrl: './record-string.component.html',
   styleUrls: ['./record-string.component.css'],
   animations: [
-    trigger('changeState', [
-      state('start', style({opacity: 0})),
-      state('finish', style({opacity: 1})),
-      transition('start <=> finish', [animate('200ms')])
-    ]),
+    trigger(
+        'showUp',
+        [
+          transition(
+              ':enter', [
+                style({opacity: 0}),
+                animate('200ms', style({opacity: 1}))
+              ]
+          )
+        ])
   ]
 })
-export class RecordStringComponent implements OnInit, OnDestroy{
+export class RecordStringComponent {
   @Input('data') data: string;
   private state: string;
-
-  ngOnInit(): void {
-    this.state = 'start';
-    setTimeout(() => this.state = 'finish', )
-  }
-
-  ngOnDestroy(): void {
-    this.state = 'start';
-  }
 }
